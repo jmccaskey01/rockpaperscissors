@@ -100,15 +100,3 @@ buttons.forEach((button) => {
     updateScoreboard(playRound(button.id));
     });
 });
-
-
-  /*
-  1. listen for button press DONE
-  2. on button press, call playRound, passing playerSelection DONE
-  3. playRound will return result as described in compareSelection: 1 for player wins round, 2 for computer wins round, 0 for tie
-  4. store result in score tally, display on scoreboard - remember to build
-  5. announce winner once one side gets 5 points
-  */
-  //loop for five rounds
-
-  /* LISTENERS */
