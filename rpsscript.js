@@ -65,22 +65,32 @@ function updateScoreboard(roundResult) {
     scoreBoard.innerHTML =`Round: ${round} <br>
      Player: ${playerSelection} <br>
      Computer: ${computerSelection} <br>
-     Winner: Player <br>
+     Round Winner: Player <br>
      Score: Player:${playerScore}  Computer:${computerScore}`;
   } else if (roundResult == 2) {
     computerScore++;
     scoreBoard.innerHTML =`Round: ${round} <br>
      Player: ${playerSelection} <br>
      Computer: ${computerSelection} <br>
-     Winner: Computer <br>
+     Round Winner: Computer <br>
      Score: Player:${playerScore}  Computer:${computerScore}`;
   } else if (roundResult == 0) {
     scoreBoard.innerHTML =`Round: ${round} <br>
      Player: ${playerSelection} <br>
      Computer: ${computerSelection} <br>
-     Winner: Tie <br>
+     Round Winner: Tie <br>
      Score: Player:${playerScore}  Computer:${computerScore}`;
-     }
+   }
+
+   if ( (playerScore >= 5) || (computerScore >= 5) ) {
+     let winner = (playerScore > computerScore) ? 'PLAYER' : 'COMPUTER'
+     scoreBoard.innerHTML =`Round: ${round} <br>
+      Player: ${playerSelection} <br>
+      Computer: ${computerSelection} <br>
+      Round Winner: Tie <br>
+      Score: Player:${playerScore}  Computer:${computerScore} <br>
+      GAME WINNER: ${winner}`;
+   }
 }
 
 
