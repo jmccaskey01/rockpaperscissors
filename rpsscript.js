@@ -11,7 +11,7 @@ function computerPlay() {
 }
 
 function playerPlay() {
-  return prompt("Rock, Paper, or Scissors?", "Choose your weapon.").toLowerCase();
+//listen for button click, return that button click
 }
 
 function compareSelection(playerSelection, computerSelection) {
@@ -50,27 +50,24 @@ function game() {
   let computerScore = 0;
   let roundResult;
 
-  //loop for five rounds
-  for (let round = 1; round <= 5; round++) {
-    computerSelection = computerPlay();
-    playerSelection = playerPlay();
 
-    console.log(`Round: ${round}`);
-    roundResult = compareSelection(playerSelection, computerSelection);
+  computerSelection = computerPlay();
+  playerSelection = playerPlay();
 
-    if (roundResult == 1) {
-      playerScore++;
-      console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You won this round.`);
-      console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-    } else if (roundResult == 2) {
-      computerScore++;
-      console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You lost this round.`);
-      console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-    } else if (roundResult == 0) {
-      console.log('It was a tie.');
-      console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-    }
+  console.log(`Round: ${round}`);
+  roundResult = compareSelection(playerSelection, computerSelection);
 
+  if (roundResult == 1) {
+    playerScore++;
+    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You won this round.`);
+    console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
+  } else if (roundResult == 2) {
+    computerScore++;
+    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You lost this round.`);
+    console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
+  } else if (roundResult == 0) {
+    console.log('It was a tie.');
+    console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
   }
 
   console.log(`The final score is: Player: ${playerScore} Computer:${computerScore}`);
@@ -81,7 +78,7 @@ function game() {
   } else {
     console.log("The whole game was a tie.");
   }
-  //display winner and score after 5 rounds
+
 }
 
 game();
