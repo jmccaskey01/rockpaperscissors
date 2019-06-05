@@ -4,6 +4,9 @@ let round = 0;
 let computerSelection;
 let playerSelection;
 
+const buttons = document.querySelectorAll('button');
+const scoreBoard = document.querySelector('.scoreBoard');
+
 function computerPlay() {
   let choice = Math.floor(Math.random() * 3);
 
@@ -56,80 +59,46 @@ function playRound(buttonID) {
 function updateScoreboard(roundResult) {
 
   round++;
-  console.log(`Round: ${round}`);
 
   if (roundResult == 1) {
     playerScore++;
-    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You won this round.`);
-    console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
+    scoreBoard.innerHTML =`Round: ${round} <br>
+     Player: ${playerSelection} <br>
+     Computer: ${computerSelection} <br>
+     Winner: Player <br>
+     Score: Player:${playerScore}  Computer:${computerScore}`;
   } else if (roundResult == 2) {
     computerScore++;
-    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You lost this round.`);
-    console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
+    scoreBoard.innerHTML =`Round: ${round} <br>
+     Player: ${playerSelection} <br>
+     Computer: ${computerSelection} <br>
+     Winner: Computer <br>
+     Score: Player:${playerScore}  Computer:${computerScore}`;
   } else if (roundResult == 0) {
-    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. It was a tie.`);
-    console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-  }
+    scoreBoard.innerHTML =`Round: ${round} <br>
+     Player: ${playerSelection} <br>
+     Computer: ${computerSelection} <br>
+     Winner: Tie <br>
+     Score: Player:${playerScore}  Computer:${computerScore}`;
+     }
 }
 
-//core function
-function game() {
 
-  //let roundResult;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+    updateScoreboard(playRound(button.id));
+    });
+});
+
 
   /*
   1. listen for button press DONE
   2. on button press, call playRound, passing playerSelection DONE
   3. playRound will return result as described in compareSelection: 1 for player wins round, 2 for computer wins round, 0 for tie
-  4. store result in score tally, display on scoreboard - remember to bui
+  4. store result in score tally, display on scoreboard - remember to build
   5. announce winner once one side gets 5 points
   */
   //loop for five rounds
 
   /* LISTENERS */
-  const buttons = document.querySelectorAll('button');
-
-  buttons.forEach((button) => {
-    //  console.log(`clicked ${button.id}`)
-    // updateScoreboard(round, playRound(button.id))
-      button.addEventListener('click', () => {
-      updateScoreboard(playRound(button.id));
-      });
-  });
-
-
-
-  /* for (let round = 1; round <= 5; round++) {
-    computerSelection = computerPlay();
-    playerSelection = playerPlay();
-
-    console.log(`Round: ${round}`);
-    roundResult = compareSelection(playerSelection, computerSelection);
-
-    if (roundResult == 1) {
-      playerScore++;
-      console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You won this round.`);
-      console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-    } else if (roundResult == 2) {
-      computerScore++;
-      console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}. You lost this round.`);
-      console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-    } else if (roundResult == 0) {
-      console.log('It was a tie.');
-      console.log(`The current score is: Player:${playerScore}  Computer:${computerScore}`);
-    }
-
-  }*/
-  /*
-  console.log(`The final score is: Player: ${playerScore} Computer:${computerScore}`);
-  if (playerScore > computerScore) {
-    console.log("You won!");
-  } else if (playerScore < computerScore) {
-    console.log("You lost!");
-  } else {
-    console.log("The whole game was a tie.");
-  }*/
-  //display winner and score after 5 rounds
-}
-
-game();
